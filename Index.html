@@ -1,1 +1,513 @@
-rfgthgfd
+<html>
+	<head>
+
+	<Style type="text/CSS">
+	div[data-dimension] {
+	float:left;
+}
+@font-face 
+{
+    font-family: Proxima;
+    src: url(Proxima.ttf);
+}
+@font-face 
+{
+    font-family: ProximaThin;
+    src: url(Proximads.otf);
+}
+#canvas .circle 
+{
+	display: inline-block;
+	margin: 1em;
+}
+
+.circles-decimals 
+{
+	font-size: .4em;
+}
+	
+.popup 
+{
+	text-decoration: none;
+	position:relative;
+}
+.popup span 
+{
+	margin-left: -999em;
+	position: absolute;
+}
+.popup:hover span 
+{
+		border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+		font-family: ProximaThin;
+		position: absolute; left: 0em; top: -8em;
+		margin-left: 0; height:20px; width: 80px; ;
+}
+.TeachMe { padding: 1em 1em; }
+.TeachMe {background: black; Color:white; Font-Size:20}
+	
+#progressbar {
+  background-color: #e0e0e0;
+  border-radius: 5px; 
+  padding: 3px;
+  width: 25%;
+}
+
+#progress1 {
+   background-color: #ff2d55;
+   width: 75%;
+   height: 20px;
+   border-radius: 5px;
+}
+#progress2 {
+   background-color: #ff2d55;
+   width: 50%;
+   height: 20px;
+   border-radius: 5px;
+}
+#progress3 {
+   background-color: #ff2d55;
+   width: 12%;
+   height: 20px;
+   border-radius: 5px;
+}
+#progress4 {
+   background-color: #ff2d55;
+   width: 64%;
+   height: 20px;
+   border-radius: 5px;
+}
+	
+
+body 
+{
+	
+	margin:0 auto;
+	padding:0;
+	height:100%;
+	width:50%;
+}
+#Page 
+{
+	min-height:100%;
+	position:relative;
+}
+#header 
+{
+	height:40px;
+	padding:10px;
+}
+#content 
+{
+	padding-bottom:100px;
+}
+#footer 
+{
+	width:100%;
+	height:40px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+.Basic
+{
+	color:black;
+	Font-Size:50px;
+	Font-family:"Proxima";
+}
+.Thin
+{
+	Font-Size:17px;
+	Font-family:"ProximaThin";
+	Vertical-Align:super;
+	color:#878787;
+}
+	
+
+	</Style>
+	</head>
+	<body>
+	<link href="jquery.circliful.css" rel="stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="jquery.circliful.min.js"></script>
+	<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+        <script>
+		
+            var graph;
+            var xPadding = 30;
+            var yPadding = 30;
+            
+            var data = { values:[
+                { X: "1", Y: 80 },
+                { X: "2", Y: 80 },
+                { X: "3", Y: 80 },
+                { X: "4", Y: 80 },
+                { X: "x", Y: 79 },
+				 { X: "1", Y: 79 },
+                { X: "2", Y: 78 },
+                { X: "3", Y: 77 },
+                { X: "4", Y: 76 },
+                { X: "x", Y: 76 },
+				 { X: "1", Y: 75 },
+                { X: "2", Y: 74 },
+                { X: "3", Y: 73 },
+                { X: "4", Y: 72 },
+                { X: "x", Y: 72 },
+				 { X: "1", Y: 71 },
+                { X: "2", Y: 69 },
+                { X: "3", Y: 68 },
+                { X: "4", Y: 66 },
+                { X: "x", Y: 64 },
+				 { X: "1", Y: 63 },
+                { X: "2", Y: 60 },
+                { X: "3", Y: 57 },
+                { X: "4", Y: 55 },
+                { X: "x", Y: 53 },
+				 { X: "1", Y: 50 },
+                { X: "2", Y: 48 },
+                { X: "3", Y: 44 },
+                { X: "4", Y: 41 },
+                { X: "x", Y: 41 },
+				 { X: "1", Y: 43 },
+                { X: "2", Y: 45 },
+                { X: "3", Y: 46 },
+                { X: "4", Y: 48 },
+                { X: "x", Y: 49 },
+				 { X: "1", Y: 49 },
+                { X: "2", Y: 48 },
+                { X: "3", Y: 46 },
+                { X: "4", Y: 45 },
+                { X: "x", Y: 43 },
+				 { X: "1", Y: 41 },
+                { X: "2", Y: 40 },
+                { X: "3", Y: 38 },
+                { X: "4", Y: 36 },
+                { X: "x", Y: 35 },
+				     { X: "1", Y: 34 },
+                { X: "2", Y: 32 },
+                { X: "3", Y: 30 },
+                { X: "4", Y: 29 },
+                { X: "x", Y: 30 },
+				 { X: "1", Y: 32 },
+                { X: "2", Y: 36 },
+                { X: "3", Y: 38 },
+                { X: "4", Y: 40 },
+                { X: "x", Y: 42 },
+				 { X: "1", Y: 46 },
+                { X: "2", Y: 48 },
+                { X: "3", Y: 50 },
+                { X: "4", Y: 50 },
+                { X: "x", Y: 51 },
+				 { X: "1", Y: 49 },
+                { X: "2", Y: 48 },
+                { X: "3", Y: 46 },
+                { X: "4", Y: 44 },
+                { X: "x", Y: 43 },
+				 { X: "1", Y: 44},
+                { X: "2", Y: 48 },
+                { X: "3", Y: 51 },
+                { X: "4", Y: 54 },
+                { X: "x", Y: 55 },
+				 { X: "1", Y: 56 },
+                { X: "2", Y: 58 },
+                { X: "3", Y: 59 },
+                { X: "4", Y: 58 },
+                { X: "x", Y: 56 },
+				 { X: "1", Y: 55 },
+                { X: "2", Y: 54 },
+                { X: "3", Y: 55 },
+                { X: "4", Y: 56 },
+                { X: "x", Y: 58 },
+				 { X: "1", Y: 59 },
+                { X: "2", Y: 61 },
+                { X: "3", Y: 60 },
+                { X: "4", Y: 60 },
+                { X: "x", Y: 60 },
+				 { X: "1", Y: 61 },
+                { X: "2", Y: 63 },
+                { X: "3", Y: 65 },
+                { X: "4", Y: 68 },
+                { X: "x", Y: 70 },
+            ]};
+            function getMaxY() {
+                var max = 0;
+                
+                for(var i = 0; i < data.values.length; i ++) {
+                    if(data.values[i].Y > max) {
+                        max = data.values[i].Y;
+                    }
+                }
+                
+                max += 30 - max % 10;
+                return max;
+            }
+            function getXPixel(val) {
+                return ((graph.width() - xPadding) / data.values.length) * val + (xPadding * 1.5);
+            }
+            function getYPixel(val) {
+                return graph.height() - (((graph.height() - yPadding) / getMaxY()) * val) - yPadding;
+            }
+
+            $(document).ready(function() {
+                graph = $('#graph');
+                var c = graph[0].getContext('2d');            
+                
+                c.lineWidth = 10;
+                c.strokeStyle = 'white';
+                c.font = 'italic 8pt sans-serif';
+                c.textAlign = "center";
+                c.beginPath();
+                c.moveTo(xPadding, 0);
+                c.lineTo(xPadding, graph.height() - yPadding);
+                c.lineTo(graph.width(), graph.height() - yPadding);
+                c.stroke();
+                c.strokeStyle = 'blue';
+                c.beginPath();
+                c.moveTo(getXPixel(0), getYPixel(data.values[0].Y));
+                for(var i = 1; i < data.values.length; i ++) {
+                    c.lineTo(getXPixel(i), getYPixel(data.values[i].Y));
+                }
+                c.stroke();
+                c.fillStyle = 'blue';
+                
+                for(var i = 0; i < data.values.length; i ++) {  
+                    c.beginPath();
+                    c.arc(getXPixel(i), getYPixel(data.values[i].Y), 1, 0, Math.PI * 1, true);
+                    c.fill();
+                }
+            });
+        </script>
+	<Script>
+	var FB=true;	
+	function Week1()
+	{
+	document.getElementById("progress1").style.width = 124;
+	document.getElementById("progress2").style.width = 156;
+	document.getElementById("progress3").style.width = 200;
+	document.getElementById("progress4").style.width = 56;
+	document.getElementById("Circle1").percent = 20;
+	}
+	function Week2()
+	{
+	document.getElementById("progress1").style.width = 230;
+	document.getElementById("progress2").style.width = 59;
+	document.getElementById("progress3").style.width = 146;
+	document.getElementById("progress4").style.width = 12;
+	}
+	function Week3()
+	{
+	document.getElementById("progress1").style.width = 124;
+	document.getElementById("progress2").style.width = 156;
+	document.getElementById("progress3").style.width = 165;
+	document.getElementById("progress4").style.width = 204;
+	}
+	function Week4()
+	{
+	document.getElementById("progress1").style.width = 59;
+	document.getElementById("progress2").style.width = 156;
+	document.getElementById("progress3").style.width = 75;
+	document.getElementById("progress4").style.width = 198;
+	}
+	function WeekBack()
+	{
+	document.getElementById("progress1").style.width = 20;
+	document.getElementById("progress2").style.width = 20;
+	document.getElementById("progress3").style.width = 20;
+	document.getElementById("progress4").style.width = 20;
+	}
+	function Odkaz()
+	{
+	window.open( "http://www.Twitter.com/" );
+	}
+	function ChangeFB()
+	{
+	if(FB)
+	{
+		document.getElementById("FB").src="FBlike2.png";
+		FB=false;
+	}
+	else
+	{
+	 document.getElementById("FB").src="FBlike.png";
+	 FB=true;
+	}
+	}
+	function ChangeImg1(a)
+	{
+	if( a==0)
+	{
+		document.getElementById("img1").src="Mustache1N.png";
+	}
+	else
+	{
+	 document.getElementById("img1").src="Mustache1.png";
+	}
+	}
+	function ChangeImg2(a)
+	{
+	if( a==0)
+	{
+	 document.getElementById("img2").src="Mustache2N.png";
+	}
+	else
+	{
+	 document.getElementById("img2").src="Mustache2.png";
+	}
+	}
+	function ChangeImg3(a)
+	{
+	if( a==0)
+	{
+	 document.getElementById("img3").src="Mustache3N.png";
+	}
+	else
+	{
+	 document.getElementById("img3").src="Mustache3.png";
+	}
+}
+function Zmizet(Objekt) {
+  Objekt.style.opacity = Math.round((Objekt.style.opacity-0.1) * 100) / 100;
+  if (Objekt.style.opacity) 
+  {
+    setTimeout(function() { Zmizet(Objekt) }, 30);
+  }
+}
+	</Script>
+	<div id="Page">
+		<div id="header">
+		
+				  <P Align=Right><img Name="Menu" SRC="MenuImg.png"  Align=Left> <Span  Class="Thin">Something we can help you with?</Span> <img Name="Email" SRC="EmailImg.png"></P>
+				<hr>		  
+				</div>
+		
+		<div id="content">
+				<p Class="Basic" Align=center>  We are <b> Innovare </b> software </p>
+				<p Class="Thin" Align=center Style="Font-Size:30px"> Some really interesting fact </p>
+				<br> <br> <br>
+				<div Align=Right> <img Name="Phone" SRC="PhoneImg.png"  Align=Left Hspace=130px Width="260px" Height="400" Style="float:Left">  </div>
+					<p> <Span  Class="Basic" Align=left>TeachMe</Span>  <Span  Class="Basic" Align=left Style="Font-Size:15px;Vertical-Align:top">TM</Span> </p>
+					<p Class="Thin" Align=left Style="Font-Size:25px"> Best way how to learn effectively </p>
+					<Span ID="Check"  style="opacity: 1"><p Class="Basic" Align=left Style="Font-Size:25px; margin-left:530px"> <img Name="Checker" SRC="CheckerImg.png"  Align=Left vspace=5px hspace=10px  Width="30px" Height="25px"> Really interesting fact about something </p>
+					<p Class="Basic" Align=left Style="Font-Size:25px; margin-left:530px"> <img Name="Checker" SRC="CheckerImg.png"  Align=Left vspace=5px hspace=10px  Width="30px" Height="25px"> There is much more to reveal </p> </span>
+					<p> <img Name="CheckOut" onClick="Zmizet(Check)" SRC="CheckoutImg.png"  Align=Left Width="240" Height="90"> </p>
+					<br><br><br><br><br><br><br><br>
+					<p Style="margin-left:350px">	
+					<a class="popup" href="#"><span class="TeachMe">TeachMe<img Name="Arrow" SRC="arrow.png"  Width="60px" Height="40"></span>
+													<button Align=Left onmouseover="ChangeImg1(0)" onmouseleave="ChangeImg1(1)" Style="Border:none;"> <img ID="img1" Name="Mustache1" SRC="Mustache1.png" Width="80px" Height="80px"> </button></a>
+					<a class="popup" href="#"><span class="TeachMe">TeachMe<img Name="Arrow" SRC="arrow.png"  Width="60px" Height="40"></span>
+													<button Align=Left onmouseover="ChangeImg2(0)" onmouseleave="ChangeImg2(1)" Style="Border:none;"> <img ID="img2" Name="Mustache2" SRC="Mustache2.png" Width="80px" Height="80px"> </button></a>
+					<a class="popup" href="#"><span class="TeachMe">TeachMe<img Name="Arrow" SRC="arrow.png"  Width="60px" Height="40"></span>
+													<button Align=Left onmouseover="ChangeImg3(0)" onmouseleave="ChangeImg3(1)" Style="Border:none;"> <img ID="img3" Name="Mustache3" SRC="Mustache3.png" Width="80px" Height="80px"> </button></a>
+													<img Name="Otaznik" SRC="Otaznik.png" Width="80px" Height="80px" title="No questions please">
+					<br><br><br><br><br><br><hr>
+					<P Class="Basic" Style="Font-size:35px"> <Span Style="color:66ff66">1 </Span> The numbers speak for themselves</p>
+					<p Class="Thin" Style="Font-size:22px"> This looks like hard math exercise <p>
+					<br><br><br><br>	
+					
+<script>
+$( document ).ready(function() {
+$('#Circle1').circliful();
+});
+</script>
+<div id="Circle1" 
+data-dimension="200" 
+data-text="75%"
+data-width="10" 
+data-fontsize="50" 
+data-percent="75" 
+data-fgcolor="blue" 
+data-bgcolor="white" 
+data-fill="white">
+</div>		
+<script>
+$( document ).ready(function() {
+$('#Circle2').circliful();
+});
+</script>
+<div id="Circle2" 
+data-dimension="200" 
+data-text="250" 
+data-width="20" 
+data-fontsize="50" 
+data-percent="100" 
+data-fgcolor="orange" 
+data-bgcolor="white" 
+data-fill="#ffad5c">
+</div>	
+<script>
+$( document ).ready(function() {
+$('#Circle3').circliful();
+});
+</script>
+<div id="Circle3" 
+data-dimension="200" 
+data-text="1/4" 
+data-width="10" 
+data-fontsize="50" 
+data-percent="25" 
+data-fgcolor="#85e685" 
+data-bgcolor="white" 
+data-fill="white">
+</div>	
+			<p>
+			<br>
+			<div id="progressbar" style="float:right;margin-right:50px;">
+			<div id="progress1"></div>
+			</div>
+			<div class="Thin" style="float:right;margin-right:20px;">Michael </div>
+			</p>
+			<p>
+			<br>
+			<div id="progressbar" style="float:right;margin-right:50px;">
+			<div id="progress2"></div>
+			</div>
+			<div class="Thin" style="float:right;margin-right:20px;">Lucy </div>
+			</p>
+			<p>
+			<br>
+			<div id="progressbar" style="float:right;margin-right:50px;">
+			<div id="progress3"></div>
+			</div>
+			<div class="Thin" style="float:right;margin-right:20px;">David </div>
+			</p>
+			<p>
+			<br>
+			<div id="progressbar" style="float:right;margin-right:50px;">
+			<div id="progress4"></div>
+			</div>
+			<div class="Thin" style="float:right;margin-right:20px;">George </div>
+			</p>
+			<p Class="Basic"Style="Font-size:25; Float:left">
+			<span Style="Color:gray; margin-left:30">Stuning fact</span><span style="margin-left:90">Finished</span>
+			<span Style="Color:gray; margin-left:90">Chance to win</span><span style="margin-left:190">Week goals</span> 
+			</p>
+			<br><br><br><br><br><br>
+			   <canvas id="graph" width="1000" height="400"></canvas> 
+			   <P Class="Basic"><Button onmouseover="Week1()" onmouseleave="WeekBack()" Style="margin-left:40;Border:none;"><span Class="Basic">1. Week</span></button><Button onmouseover="Week2()" onmouseleave="WeekBack()" Style="margin-left:50;Border:none;"><span Class="Basic">2. Week</span></button>
+			   <Button onmouseover="Week3()" onmouseleave="WeekBack()" Style="margin-left:50;Border:none;"><span Class="Basic">3. Week</span></button><Button onmouseover="Week4()" onmouseleave="WeekBack()" Style="margin-left:50;Border:none;"><span Class="Basic">4. Week</span></button></p>
+			   <p Class="Basic" Style="font-size:25" align=center>Innovare 2015 <Span Style="Color:gray">- Straight to the bright future<Span> <P>
+</div>
+		
+		<div id="footer">
+				<hr>	
+				<div Class="Thin" Style="Font-size:20px">Copyright@2015<span Class="Basic" Style="Font-size:20px">Innovare</Span>
+				<img ID="FB" onClick="ChangeFB()"  Name="FBlike" SRC="Fblike.png" align=Right>
+				
+				<Span align=Right><img Name="Twitter" onClick="Odkaz()" SRC="twitter.png" align=Right  Width="80px" Height="30"></Span>
+				</div>
+		</div>
+		
+	</div>
+
+
+
+	
+
+
+
+
+
+
+
+	</body>
+</html>
